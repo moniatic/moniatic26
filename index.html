@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="cat">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/font.css" type="text/css" charset="utf-8" />
+    <title>Moniàtic 2025</title>
+    <style>
+        :root {
+            --groc: #E4AA3E;
+            --verd: #01A47B;
+            --cru: #D0BA9D;
+            --vermell: #CA2755;
+            --negre: #12110F;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        ul li {
+            list-style-type: none;
+        }
+
+        body {
+            font-family: myFirstFont;
+            background: var(--vermell);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: .1em;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 385px;
+        }
+
+        header {
+            box-sizing: border-box;
+            width: 100%;
+            background: var(--verd);
+        }
+
+        header h1,
+        header h2 {
+            padding: 0.3em 0 0 0;
+            letter-spacing: 0.05em;
+            color: var(--cru);
+        }
+
+        header h1 {
+            text-align: center;
+            font-size: 3.5em;
+            letter-spacing: 0.04em;
+        }
+
+        header h2 {
+            text-align: center;
+            font-size: 1.6em;
+        }
+
+        header h3 {
+            padding: 0.5em 0;
+            margin: 0.5em 0 0 0;
+            color: var(--verd);
+            background: var(--cru);
+            text-align: center;
+        }
+
+        main {
+            width: 100%;
+            background: var(--groc);
+            color: #281f1d;
+        }
+
+        section {
+            padding: 0.5em 0;
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            padding: 1em 0.5em;
+        }
+
+        time {
+            margin: 0.5em 0 0 0;
+        }
+
+        time,
+        em,
+        em a {
+            color: var(--vermell);
+        }
+
+        em a:hover {
+            color: var(--verd);
+            border-bottom: 2px solid var(--verd);
+        }
+
+        em a {
+            font-size: 0.8em;
+            border-bottom: 2px solid var(--vermell);
+        }
+
+        footer p {
+            padding: 0.6em;
+            text-align: center;
+            color: var(--verd);
+            background-color: var(--cru);
+            font-size: 1.1em;
+            letter-spacing: 0.11em;
+        }
+
+        #concerts {
+            transition: opacity 0.6s ease;
+        }
+
+        #concerts.shuffle {
+            opacity: 0;
+        }
+
+        #concerts li {
+            transition:
+                transform 0.6s ease,
+                opacity 0.6s ease;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const ul = document.getElementById("concerts");
+            const items = Array.from(ul.children);
+
+            // Oculta la llista
+            ul.classList.add("shuffle");
+
+            setTimeout(() => {
+
+                // Fisher-Yates
+                for (let i = items.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [items[i], items[j]] = [items[j], items[i]];
+                }
+
+                items.forEach(item => ul.appendChild(item));
+
+                // Torna a mostrar-la
+                ul.classList.remove("shuffle");
+
+            }, 600);
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Moniàtic</h1>
+            <h2>Per l'educació pública, la nostra terra i els </br>nostres drets.</h2>
+            <h3>25, 26, 27 de setembre 2025</h3>
+        </header>
+        <main>
+            <section>
+                <h1>Programació</h1>
+                <div id="dijous" class="col1">
+                    <h2 datetime="2026-09-24">Dijous 24 de setembre</h2>
+                    <div class="content">
+                        <time datetime="20:00">20.00 Concert</time>
+                        <strong>Toni de l'hostal</strong>
+                        <em><a href="https://maps.app.goo.gl/4wh5YESAw7Tbcym36">Pub L'Escenari, C/Plaça Isabel Clara
+                                Simó,
+                                Alcoi</a></em>
+                    </div>
+                </div>
+                <div class="content">
+                    <h2 datetime="2025-09-25">Divendres 25 de setembre</h2>
+                    <div class="content">
+                        <time datetime="19:30">18.30 h. Presentació de 'La Terra no és el teu planeta', d’Andreu
+                            Escrivà</time>
+                        <em><a href="https://maps.app.goo.gl/DAeXFvsFPwuD2cvb6">Detroit Llibres, C/Oliver, 5,
+                                Alcoi</a></em>
+                    </div>
+                </div>
+                <div class="content">
+                    <h2 datetime="2025-09-27">Dissabte 26 de setembre</h2>
+                    <div class="content">
+                        <time datetime="9:00">9.00 Ruta</time>
+                        <strong>En busca de l’ombra perduda, a càrrec de la Carrasca Ecologistes en Acció. Eixida des
+                            del Parterre. No cal
+                            inscripció.</strong>
+                        <strong>Titelles</strong>
+                        <time datetime="11:00">11.00 Miniàtic: 'Gori Gori'd'El ball de Sant Vito</time>
+                        <strong>Taller</strong>
+                        <time datetime="12:00">12.00 Taller de fabricació de titelles</time>
+                        <strong>Vermut</strong>
+                        <time datetime="13:00">13.00 Vermut amb The Clitorians</time>
+                        <em><a href="https://maps.app.goo.gl/d7uzCYuYuUG26v4v7">C/ Forn del Vidre, Alcoi</a></em>
+                    </div>
+                    <div class="content">
+                        <time datetime="19:00">19.00 Concerts</time>
+                        <ul id="concerts">
+                            <li>Aurora Roja</li>
+                            <li>Josep Maria Cendra</li>
+                            <li>Júlia</li>
+                            <li>Mel de romer</li>
+                            <li>Roxie Heart</li>
+                            <li>We are not brothers</li>
+                        </ul>
+                        <em><a href="https://maps.app.goo.gl/d7uzCYuYuUG26v4v7">C/ Solar Sant Rafel, Alcoi</a></em>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>El Moniàtic l'organitzem persones i col·lectius de manera altruïsta, perquè volem i sense vore un duro.
+            </p>
+            <p>Programem artistes des de criteris com la llengua, el gènere, la proximitat i que normalment no troben
+                espai als circuits convencionals.</p>
+            <p>Si vols contribuir amb el projecte, pots comprar merxan, menjar i beguda, si no et va bé la despesa, et
+                tractarem <br>igual de bé.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
